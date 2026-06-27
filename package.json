@@ -28,6 +28,14 @@
     "test": ""
   },
   "devDependencies": {
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "webpack": "^5.108.1",
+    "webpack-cli": "^7.1.0"
+  },
+  "dependencies": {
+    "@babel/core": "^8.0.1",
+    "@babel/preset-env": "^8.0.2",
+    "@babel/preset-react": "^8.0.1",
+    "babel-loader": "^10.1.1"
   }
 }
