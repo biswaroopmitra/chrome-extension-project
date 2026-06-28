@@ -7,7 +7,7 @@
     "incremental": true,
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
-    "module": "commonjs",//nodenext
+    "module": "esnext",//commonjs//nodenext
     "target": "es2017",//esnext
     "types": [],
     // For nodejs:
