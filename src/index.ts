@@ -1,4 +1,4 @@
-/// <reference types="chrome" />
+// /// <reference types="chrome" />
 
 let selectedColour = '#ffff00';
 
