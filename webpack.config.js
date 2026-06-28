@@ -3,8 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
-  devtool: 'cheap-module-source-map',
+  mode: 'production',//development
+  devtool: false,//'cheap-module-source-map'
   entry: {
     index: './src/index.ts',
     content: './src/content.ts',
@@ -35,6 +35,7 @@ module.exports = {
       patterns: [
         { from: 'manifest.json', to: '.' },
         { from: 'src/swatch.css', to: '.' },
+        { from: 'src/icons', to: 'icons' },
       ],
     }),
   ],
