@@ -2,7 +2,7 @@
   "name": "Text highlighter",
   "version": "1.0",
   "manifest_version": 3,
-  "description": "A simple extension to highlight text.",
+  "description": "A simple extension for highlighting text.",
   "action": {
     "default_popup": "index.html"
   },
