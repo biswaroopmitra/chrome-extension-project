@@ -1,12 +1,19 @@
 {
-    "name": "Text highlighter",
-    "version": "1.0",
-    "manifest_version": 3,
-    "description": "A simple extension to highlight text.",
-    "browser_action": {        
-        "default_popup": "index.html"
-    },
-    "permissions": [
-        "activeTab"
-    ]
+  "name": "Text highlighter",
+  "version": "1.0",
+  "manifest_version": 3,
+  "description": "A simple extension to highlight text.",
+  "action": {
+    "default_popup": "index.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "permissions": [
+    "activeTab",
+    "storage"
+  ]
 }
