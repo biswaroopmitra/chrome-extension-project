@@ -34,6 +34,7 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         { from: 'manifest.json', to: '.' },
+        { from: 'src/swatch.css', to: '.' },
       ],
     }),
   ],
