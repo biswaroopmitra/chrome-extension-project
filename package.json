@@ -27,8 +27,8 @@
     "copy": "copyfiles -f manifest.json src/index.html dist/",
     "watch:ts": "tsc --watch",
     "watch:assets": "chokidar \"manifest.json\" \"src/index.html\" -c \"npm run copy\"",
-    "dev": "npm run clean && npm run copy && npm-run-all --parallel watch:ts watch:assets",
-    "build": "npm run clean && tsc && npm run copy",
+    "dev": "webpack --watch",
+    "build": "webpack",
     "test": ""
   },
   "devDependencies": {
