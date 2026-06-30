@@ -1,7 +1,8 @@
-import { INDEX_FILE_CSS_BUTTON, INDEX_FILE_CSS_BUTTON_CLICK, INDEX_FILE_ELEMENT_BY_ID, INDEX_FILE_ADD_EVENT_LISTENER, INDEX_FILE_CLASS_LIST_REMOVE, INDEX_FILE_CLASS_LIST_ADD, INDEX_FILE_SEND_MESSAGE_ACTION} from './constants';
+import { INDEX_FILE_CSS_BUTTON, INDEX_FILE_CSS_BUTTON_CLICK, INDEX_FILE_ELEMENT_BY_ID, INDEX_FILE_ADD_EVENT_LISTENER, INDEX_FILE_CLASS_LIST_REMOVE, INDEX_FILE_CLASS_LIST_ADD, INDEX_FILE_SEND_MESSAGE_ACTION, FIRST_INDEX} from './constants';
 // /// <reference types="chrome" />
 
 let selectedColour: string = '#ffff00';
+const customInput: HTMLInputElement = document.getElementById(INDEX_FILE_ELEMENT_BY_ID) as HTMLInputElement;//'customColour'
 
 document.querySelectorAll<HTMLButtonElement>(INDEX_FILE_CSS_BUTTON).forEach(btn => {//'.swatch[data-colour]'
   btn.addEventListener(INDEX_FILE_CSS_BUTTON_CLICK, () => {//'click'
@@ -11,7 +12,6 @@ document.querySelectorAll<HTMLButtonElement>(INDEX_FILE_CSS_BUTTON).forEach(btn 
   });
 });
 
-const customInput = document.getElementById(INDEX_FILE_ELEMENT_BY_ID) as HTMLInputElement;//'customColour'
 customInput.addEventListener(INDEX_FILE_ADD_EVENT_LISTENER, () => {//'input'
   selectedColour = customInput.value;
   sendColour(selectedColour);
@@ -19,8 +19,8 @@ customInput.addEventListener(INDEX_FILE_ADD_EVENT_LISTENER, () => {//'input'
 
 function sendColour(colour: string) {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    const tabId = tabs[0]?.id;
-    if (tabId) {
+    const tabId: number | undefined = tabs[FIRST_INDEX]?.id;//0
+    if (tabId !== undefined && tabId !== null) {
       chrome.tabs.sendMessage(tabId, { action: INDEX_FILE_SEND_MESSAGE_ACTION, colour });//'setColour'
     }
   });

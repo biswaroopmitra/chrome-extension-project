@@ -12,7 +12,7 @@ chrome.runtime.onMessage.addListener((message) => {
 });
 
 document.addEventListener(EVENT, () => {//'mouseup'
-  const selection = window.getSelection();
+  const selection: Selection | null = window.getSelection();
   if (!selection || selection.rangeCount === 0) return;
   if (selection.toString().trim() === '') return;
 
@@ -20,19 +20,20 @@ document.addEventListener(EVENT, () => {//'mouseup'
 });
 
 function highlightSelection(colour: string) {
-  const selection = window.getSelection();
+  const selection: Selection | null = window.getSelection();
   if (!selection || selection.rangeCount === 0) return;
 
-  const range = selection.getRangeAt(0);
+  const range: Range = selection.getRangeAt(0);
 
   try {
-    const span = document.createElement(ELEMENT_STATUS);//'span'
+    const span: HTMLSpanElement = document.createElement(ELEMENT_STATUS);//'span'
     span.style.backgroundColor = colour;
     span.dataset.highlight = HIGHLIGHT_STATUS;//'true'
     range.surroundContents(span);
-  } catch {
-    const fragment = range.extractContents();
-    const span = document.createElement(ELEMENT_STATUS);//'span'
+  } catch (error) {
+    console.error('Error highlighting selection:', error);
+    const fragment: DocumentFragment = range.extractContents();
+    const span: HTMLSpanElement = document.createElement(ELEMENT_STATUS);//'span'
     span.style.backgroundColor = colour;
     span.dataset.highlight = HIGHLIGHT_STATUS;//'true'
     span.appendChild(fragment);

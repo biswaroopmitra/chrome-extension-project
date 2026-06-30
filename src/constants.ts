@@ -11,3 +11,4 @@ export const INDEX_QUERY_SELECTOR_ALL: string = '.swatch';
 export const INDEX_FILE_CLASS_LIST_REMOVE: string = 'active';
 export const INDEX_FILE_CLASS_LIST_ADD: string = 'active';
 export const INDEX_FILE_SEND_MESSAGE_ACTION: string = 'setColour';
+export const FIRST_INDEX: number = 0;
